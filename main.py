@@ -9,6 +9,16 @@ import requests
 from bs4 import BeautifulSoup as Soup
 
 
+#Checking Connection
+def check(url):
+	chkUrl=requests.get(url)
+	if chkUrl.status_code == 200:
+		print("HTTP 200 OK: Connection established")
+	else:
+		print("Oops! Something went wrong")
+
+	return None
+#Session Object
 session = requests.Session()
 
 def getHTML(url):
@@ -60,6 +70,7 @@ if __name__ == "__main__":
 
 	url = "https://www.nytimes.com/crosswords/game/mini"
 	# Enter the url of website
+	check(url)
 	s = getHTML(url)
 
 	# Function will return a list of clues
